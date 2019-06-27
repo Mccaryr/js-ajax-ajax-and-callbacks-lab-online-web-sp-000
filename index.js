@@ -1,15 +1,15 @@
-const displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
+var displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
 
- const renderCommit = (commit) => {
+ var renderCommit = (commit) => {
   return `<li><h3>${commit.sha}</h3><p>${commit.commit.message}</p></li>`
 }
 
- const renderCommits = (data) => {
+ var renderCommits = (data) => {
   let result = data.map((commit)=>renderCommit(commit)).join('')
   return `<ul>${result}</ul>`
 }
 
- const showCommits = (el) => {
+ var showCommits = (el) => {
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data => {
     $('#details').html(renderCommits(data))
   }).fail(error => {
@@ -17,7 +17,7 @@ const displayError = () => $('#errors').html("I'm sorry, there's been an error. 
   })
 }
 
- const renderSearchResult = (result) => {
+ var renderSearchResult = (result) => {
   return `
     <div>
       <h2><a href="${result.html_url}">${result.name}</a></h2>
@@ -28,10 +28,10 @@ const displayError = () => $('#errors').html("I'm sorry, there's been an error. 
   `
 }
 
- const renderSearchResults = (data) => data.items.map( result => renderSearchResult(result))
+ var renderSearchResults = (data) => data.items.map( result => renderSearchResult(result))
 
- const searchRepositories = () => {
-  const searchTerms = $('#searchTerms').val()
+ var searchRepositories = () => {
+  var searchTerms = $('#searchTerms').val()
   $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
       $('#results').html(renderSearchResults(data))
     }).fail(error => {
