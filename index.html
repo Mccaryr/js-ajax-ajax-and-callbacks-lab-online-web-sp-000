@@ -23,6 +23,10 @@
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
+      <form id="form1" onsubmit="searchRepositories();return false;">
+        <input type="text" id="searchTerms"><br>
+        <a href="#" onclick="document.getElementById('form1').submit();">Search</a>
+      </form>
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
